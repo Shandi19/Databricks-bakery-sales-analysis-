@@ -60,4 +60,3 @@ GROUP BY store_location
 ORDER BY SUM(quantity * unit_price) DESC;
 
 
-
