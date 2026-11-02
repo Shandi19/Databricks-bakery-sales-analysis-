@@ -30,3 +30,26 @@ FROM bakery_sales
 ORDER BY sale_id
 LIMIT 10;
 
+-- Rank individual Downtown transaction lines.
+SELECT
+  sale_id,
+  product_name,
+  quantity,
+  unit_price,
+  quantity * unit_price AS line_revenue
+FROM bakery_sales
+WHERE store_location = 'Downtown'
+ORDER BY quantity * unit_price DESC;
+
+-- Summarize performance by product.
+SELECT
+  product_name,
+  SUM(quantity) AS units_sold,
+  SUM(quantity * unit_price) AS revenue,
+  COUNT(*) AS transaction_lines
+FROM bakery_sales
+GROUP BY product_name
+ORDER BY SUM(quantity * unit_price) DESC;
+
+
+
