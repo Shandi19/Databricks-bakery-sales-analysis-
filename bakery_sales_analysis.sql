@@ -51,5 +51,13 @@ FROM bakery_sales
 GROUP BY product_name
 ORDER BY SUM(quantity * unit_price) DESC;
 
+-- Summarize revenue by store location for the bar visualization.
+SELECT
+  store_location,
+  SUM(quantity * unit_price) AS revenue
+FROM bakery_sales
+GROUP BY store_location
+ORDER BY SUM(quantity * unit_price) DESC;
+
 
 
